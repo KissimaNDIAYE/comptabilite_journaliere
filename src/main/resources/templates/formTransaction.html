@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des transactions</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des transactions
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListeTransaction}">transactions</a>
+    </div>
+
+    <form th:action="@{saveTransaction}" method="post">
+        <div class="row" style="font-size: 0.8em">
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>TAX_TRANS_NO</th>
+                            <th>PAYMENT_LOC_NO</th>
+                            <th>PAYMENT_TYPE_NO</th>
+                            <th>IRD_EMPLOYEE_NO</th>
+                            <th>TAX_CENTRE_NO</th>
+                            <th>TRANS_DATE</th>
+                            <th>ENTER_DATE</th>
+                            <th>ENTER_TIME</th>  
+                            <th>AMOUNT</th>
+                            <th>BANK_NO</th>
+                            <th>UNDIST_TAX_TYPE_NO</th>
+                            <th>DOC_NO</th>
+                            <th>ESTAB_NO</th>
+                            <th>PAY_AGREE_NO</th>
+                            <th>TAX_ACCOUNT_NO</th>
+                            <th>UNDIST_LAST_NAME</th>
+                            <th>UNDIST_FIRST_NAME</th>
+                            <th>RECEIPT_NO</th>
+                            <th>TAX_TRANS_COMMENT</th>
+                            <th>TAX_PAYER_NO</th>
+                            <th>TAX_TYPE_NO</th>
+                            <th>REVERSE_TRANS_NO</th>
+                            <th>RECEIPT_DOC_NO</th>
+                            <th>TXN_AMT</th>
+                            <th>TXN_CURR_NO</th>
+                            <th>TXN_EXCH_RATE</th>
+                            <th>SEQ_TRANS_NO</th>
+                            <th>RECALC_TRANS_NO</th>
+                            <th>ORIG_TAX_CENTRE_NO</th>
+                            <th>RECAP_PAY_FL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${transactions}">
+                            <td th:text="${t.TAX_TRANS_NO}"></td>
+                            <td th:text="${t.PAYMENT_LOC_NO}"></td>
+                            <td th:text="${t.PAYMENT_TYPE_NO}"></td>
+                            <td th:text="${t.IRD_EMPLOYEE_NO}"></td>
+                            <td th:text="${t.TAX_CENTRE_NO}"></td>
+                            <td th:text="${t.TRANS_DATE}"></td>
+                            <td th:text="${t.ENTER_DATE}"></td>
+                            <td th:text="${t.ENTER_TIME}"></td>
+                            <td th:text="${t.AMOUNT}"></td>
+                            <td th:text="${t.BANK_NO}"></td>
+                            <td th:text="${t.UNDIST_TAX_TYPE_NO}"></td>
+                            <td th:text="${t.DOC_NO}"></td>
+                            <td th:text="${t.ESTAB_NO}"></td>
+                            <td th:text="${t.PAY_AGREE_NO}"></td>
+                            <td th:text="${t.TAX_ACCOUNT_NO}"></td>
+                            <td th:text="${t.UNDIST_LAST_NAME}"></td>
+                            <td th:text="${t.UNDIST_FIRST_NAME}"></td>
+                            <td th:text="${t.RECEIPT_NO}"></td>
+                            <td th:text="${t.TAX_TRANS_COMMENT}"></td>
+                            <td th:text="${t.TAX_PAYER_NO}"></td>
+                            <td th:text="${t.TAX_TYPE_NO}"></td>
+                            <td th:text="${t.REVERSE_TRANS_NO}"></td>
+                            <td th:text="${t.RECEIPT_DOC_NO}"></td>
+                            <td th:text="${t.TXN_AMT}"></td>
+                            <td th:text="${t.TXN_CURR_NO}"></td>
+                            <td th:text="${t.TXN_EXCH_RATE}"></td>
+                            <td th:text="${t.SEQ_TRANS_NO}"></td>
+                            <td th:text="${t.RECALC_TRANS_NO}"></td>
+                            <td th:text="${t.ORIG_TAX_CENTRE_NO}"></td>
+                            <td th:text="${t.RECAP_PAY_FL}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

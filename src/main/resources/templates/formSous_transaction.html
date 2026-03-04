@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des transactions</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des sous_transaction
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListeSous_transaction}">sous_transaction</a>
+    </div>
+
+    <form th:action="@{saveSous_transaction}" method="post">
+        <div class="row" style="font-size: 0.8em">
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>AUTO_GEN_FLAG</th>
+                            <th>PEN_NO</th>
+                            <th>INT_NO</th>
+                            <th>JOB_NO</th>
+                            <th>LIC_BASE_NO</th>
+                            <th>ESTAB_NO</th>
+                            <th>TAX_ACCOUNT_NO</th>
+                            <th>TAX_CENTRE_NO</th>  
+                            <th>TAX_TYPE_NO</th>
+                            <th>LICENSE_NO</th>
+                            <th>SET_BY_CAPT_REM</th>
+                            <th>SET_BY_MOD</th>
+                            <th>CREDIT_SOURCE_TYPE_NO</th>
+                            <th>INST_ASSESS_NO</th>
+                            <th>INST_TRANSFER_FLAG</th>
+                            <th>APPEAL_DEPOSIT_FL</th>
+                            <th>REVENUE_CODE_NO</th>
+                            <th>REFUND_NO</th>
+                            <th>TRANSFER_TAX_TYPE_NO</th>
+                            <th>TRANSFER_ASSESS_NO</th>
+                            <th>TAX_AUTH_NO</th>
+                            <th>COMMON_REVENUE</th>
+                            <th>TAXABLE_OBJECT_NO</th>
+                            <th>COLLECTION_LOCATION_NO</th>
+                            <th>BASE_AMT_MULTIPLIER</th>
+                            <th>PI_CALC_BASE_AMT</th>
+                            <th>PI_WORKDAYS_COUNT</th>
+                            <th>TXN_AMT</th>
+                            <th>TXN_CURR_NO</th>
+                            <th>TXN_EXCH_RATE</th>
+                            <th>SEQ_TRANS_NO</th>
+                            <th>SEQ_NO</th>
+                            <th>REVERSE_FOREGONE_FL</th>
+                            <th>CHARGE_TYPE_GROUP_NO</th>
+                            <th>WRITE_OFF_TYPE_NO</th>
+                            <th>OBJECTION_NO</th>
+                            <th>OPEN_BAL_REF_NO</th>
+                            <th>ORIG_TAX_CENTRE_NO</th>
+                            <th>AUDIT_CASE_NO</th>
+                            <th>TRANSFER_FROM_SUB_TRANS_NO</th>
+                            <th>TRANSFER_OUT_CORRESP_SUB_TRANS</th>
+                            <th>TAX_SUB_TRANS_NO</th>
+                            <th>CHARGE_TYPE_NO</th>
+                            <th>TAX_TRANS_TYPE_NO</th>
+                            <th>TAX_TRANS_NO</th>
+                            <th>AMOUNT</th>
+                            <th>ENTER_DATE</th>
+                            <th>ENTER_TIME</th>
+                            <th>TAXTR_COM_NO</th>
+                            <th>TAX_PERIOD_NO</th>
+                            <th>ASSESS_NO</th>
+                            <th>ARREARS_FLAG</th>
+                            <th>REVERSE_FLAG</th>
+                            <th>REVERSE_TRANS_NO</th>
+                            <th>SUB_TRANS_COMMENT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${sous_transactions}">
+                            <td th:text="${t.AUTO_GEN_FLAG}"></td>
+                            <td th:text="${t.PEN_NO}"></td>
+                            <td th:text="${t.INT_NO}"></td>
+                            <td th:text="${t.JOB_NO}"></td>
+                            <td th:text="${t.LIC_BASE_NO}"></td>
+                            <td th:text="${t.ESTAB_NO}"></td>
+                            <td th:text="${t.TAX_ACCOUNT_NO}"></td>
+                            <td th:text="${t.TAX_CENTRE_NO}"></td>  
+                            <td th:text="${t.TAX_TYPE_NO}"></td>
+                            <td th:text="${t.LICENSE_NO}"></td>
+                            <td th:text="${t.SET_BY_CAPT_REM}"></td>
+                            <td th:text="${t.SET_BY_MOD}"></td>
+                            <td th:text="${t.CREDIT_SOURCE_TYPE_NO}"></td>
+                            <td th:text="${t.INST_ASSESS_NO}"></td>
+                            <td th:text="${t.INST_TRANSFER_FLAG}"></td>
+                            <td th:text="${t.APPEAL_DEPOSIT_FL}"></td>
+                            <td th:text="${t.REVENUE_CODE_NO}"></td>
+                            <td th:text="${t.REFUND_NO}"></td>
+                            <td th:text="${t.TRANSFER_TAX_TYPE_NO}"></td>
+                            <td th:text="${t.TRANSFER_ASSESS_NO}"></td>
+                            <td th:text="${t.TAX_AUTH_NO}"></td>
+                            <td th:text="${t.COMMON_REVENUE}"></td>
+                            <td th:text="${t.TAXABLE_OBJECT_NO}"></td>
+                            <td th:text="${t.COLLECTION_LOCATION_NO}"></td>
+                            <td th:text="${t.BASE_AMT_MULTIPLIER}"></td>
+                            <td th:text="${t.PI_CALC_BASE_AMT}"></td>
+                            <td th:text="${t.PI_WORKDAYS_COUNT}"></td>
+                            <td th:text="${t.TXN_AMT}"></td>
+                            <td th:text="${t.TXN_CURR_NO}"></td>
+                            <td th:text="${t.TXN_EXCH_RATE}"></td>
+                            <td th:text="${t.SEQ_TRANS_NO}"></td>
+                            <td th:text="${t.SEQ_NO}"></td>
+                            <td th:text="${t.REVERSE_FOREGONE_FL}"></td>
+                            <td th:text="${t.CHARGE_TYPE_GROUP_NO}"></td>
+                            <td th:text="${t.WRITE_OFF_TYPE_NO}"></td>
+                            <td th:text="${t.OBJECTION_NO}"></td>
+                            <td th:text="${t.OPEN_BAL_REF_NO}"></td>
+                            <td th:text="${t.ORIG_TAX_CENTRE_NO}"></td>
+                            <td th:text="${t.AUDIT_CASE_NO}"></td>
+                            <td th:text="${t.TRANSFER_FROM_SUB_TRANS_NO}"></td>
+                            <td th:text="${t.TRANSFER_OUT_CORRESP_SUB_TRANS}"></td>
+                            <td th:text="${t.TAX_SUB_TRANS_NO}"></td>
+                            <td th:text="${t.CHARGE_TYPE_NO}"></td>
+                            <td th:text="${t.TAX_TRANS_TYPE_NO}"></td>
+                            <td th:text="${t.TAX_TRANS_NO}"></td>
+                            <td th:text="${t.AMOUNT}"></td>
+                            <td th:text="${t.ENTER_DATE}"></td>
+                            <td th:text="${t.ENTER_TIME}"></td>
+                            <td th:text="${t.TAXTR_COM_NO}"></td>
+                            <td th:text="${t.TAX_PERIOD_NO}"></td>
+                            <td th:text="${t.ASSESS_NO}"></td>
+                            <td th:text="${t.ARREARS_FLAG}"></td>
+                            <td th:text="${t.REVERSE_FLAG}"></td>
+                            <td th:text="${t.REVERSE_TRANS_NO}"></td>
+                            <td th:text="${t.SUB_TRANS_COMMENT}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

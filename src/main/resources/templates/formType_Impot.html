@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Types d'impôt</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des types d'impôt
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListeType_Impot}">Types d'impôt</a>
+    </div>
+
+    <form th:action="@{saveType_Impot}" method="post">
+        <div class="row" style="font-size: 0.8em">
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>TAX_TYPE_NO</th>
+                            <th>TAX_BASIS_NO</th>
+                            <th>TAX_TYPE_DESC</th>
+                            <th>IS_LICENSE</th>
+                            <th>BUDGET_TYPE_NO</th>
+                            <th>USE_CRITERIA</th>
+                            <th>INSTALL_BY_DEF</th>
+                            <th>REFUND_BY_DEF</th>
+                            <th>ASSESS_NOTICE_ONLY</th>
+                            <th>PRINT_TRADE_NAME</th>
+                            <th>CONSOLIDATED</th>
+                            <th>IS_VAT</th>
+                            <th>IS_INSTALMENT</th>
+                            <th>HAS_INSTALMENT</th>
+                            <th>IN_STAT_REPORT</th>
+                            <th>USE_REVENUE_CODE</th>
+                            <th>TAX_ACCT_BY_DEF_FL</th>
+                            <th>DEF_INST_RANGE_NO</th>
+                            <th>TAX_TYPE_REFERENCE_NO</th>
+                            <th>IS_TAXABLE_OBJECT_FL</th>
+                            <th>IS_PROP_TRANSFER_FL</th>
+                            <th>IS_PROP_EXEMPTION_FL</th>
+                            <th>CREDIT_REFUNDABLE_MONTH</th>
+                            <th>CERTIFICATE_MIN_AMOUNT</th>
+                            <th>INCOME_TYPE_NO</th>
+                            <th>USE_RATE_ZONE_FL</th>
+                            <th>USES_LOSS_FL</th>
+                            <th>DOC_CODE</th>
+                            <th>ALLOW_MULTIPLE_TAX_ACCOUNTS</th>
+                            <th>INTERMITTENT_OPTION_FL</th>
+                            <th>ALLOW_MANY_ACTIVE_ACCT_FL</th>
+                            <th>DISTRIBUTE_AMT_BY_NO</th>
+                            <th>NON_FISCAL_REVENUE_FL</th>
+                            <th>INITIAL_SUSPENSION</th>
+                            <th>DELAY_DORMANCY</th>
+                            <th>ALLOW_ASSESS_FCY</th>
+                            <th>CURRENCY_NO</th>
+                            <th>TAX_AGENT_PGM_FL</th>
+                            <th>USED_BY_ETAX_FL</th>
+                            <th>CFWD_PAYM_WITH_CREDIT_FL</th>
+                            <th>DISTRIB_CF_ON_TAX_ONLY_FL</th>
+                            <th>AUTO_CARRY_FWD_FL</th>
+                            <th>EXT_TAX_CODE</th>
+                            <th>SUSPENDED_TAX</th>
+                            <th>EXEMPTED_TAX</th>
+                            <th>APPLY_DUE_DT_YRBF_FL</th>
+                            <th>IMM_ASSESS_LP_FL</th>
+                            <th>USES_CREDIT_FL</th>
+                            <th>ALLOW_MULTI_TAX_TYPE_CENTRE</th>
+                            <th>TAX_CATEGORY_NO</th>
+                            <th>TAX_PERIOD_MANDATORY_FL</th>
+                            <th>PEN_INT_CALCS_INCLUDE_CREDIT</th>
+                            <th>TAX_TYPE_CODE</th>
+                            <th>LEASE_TYPE_NO</th>
+                            <th>PAYMENT_FREQ_NO</th>
+                            <th>MUST_ENTER_TIN_FOR_IMMED_ASSM</th>
+                            <th>BYPASS_TCC_FL</th>
+                            <th>THIRD_PARTY_FL</th>
+                            <th>LICENSE_TYPE_NO</th>
+                            <th>AUTO_ASSES_CREATE_FL</th>
+                            <th>LIC_BASE_AS_ENT_ACTIVITY_FL</th>
+                            <th>PAYMENT_BASED_ON</th>
+                            <th>CAR_TAX_STICKER_FL</th>
+                            <th>STAMP_FL</th>
+                            <th>FEE_CERTIFICATE_FL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${type_impots}">
+                            <td th:text="${t.TAX_TYPE_NO}"></td>
+                            <td th:text="${t.TAX_BASIS_NO}"></td>
+                            <td th:text="${t.TAX_TYPE_DESC}"></td>
+                            <td th:text="${t.IS_LICENSE}"></td>
+                            <td th:text="${t.BUDGET_TYPE_NO}"></td>
+                            <td th:text="${t.USE_CRITERIA}"></td>
+                            <td th:text="${t.INSTALL_BY_DEF}"></td>
+                            <td th:text="${t.REFUND_BY_DEF}"></td>
+                            <td th:text="${t.ASSESS_NOTICE_ONLY}"></td>
+                            <td th:text="${t.PRINT_TRADE_NAME}"></td>
+                            <td th:text="${t.CONSOLIDATED}"></td>
+                            <td th:text="${t.IS_VAT}"></td>
+                            <td th:text="${t.IS_INSTALMENT}"></td>
+                            <td th:text="${t.HAS_INSTALMENT}"></td>
+                            <td th:text="${t.IN_STAT_REPORT}"></td>
+                            <td th:text="${t.USE_REVENUE_CODE}"></td>
+                            <td th:text="${t.TAX_ACCT_BY_DEF_FL}"></td>
+                            <td th:text="${t.DEF_INST_RANGE_NO}"></td>
+                            <td th:text="${t.TAX_TYPE_REFERENCE_NO}"></td>
+                            <td th:text="${t.IS_TAXABLE_OBJECT_FL}"></td>
+                            <td th:text="${t.IS_PROP_TRANSFER_FL}"></td>
+                            <td th:text="${t.IS_PROP_EXEMPTION_FL}"></td>
+                            <td th:text="${t.CREDIT_REFUNDABLE_MONTH}"></td>
+                            <td th:text="${t.CERTIFICATE_MIN_AMOUNT}"></td>
+                            <td th:text="${t.INCOME_TYPE_NO}"></td>
+                            <td th:text="${t.USE_RATE_ZONE_FL}"></td>
+                            <td th:text="${t.USES_LOSS_FL}"></td>
+                            <td th:text="${t.DOC_CODE}"></td>
+                            <td th:text="${t.ALLOW_MULTIPLE_TAX_ACCOUNTS}"></td>
+                            <td th:text="${t.INTERMITTENT_OPTION_FL}"></td>
+                            <td th:text="${t.ALLOW_MANY_ACTIVE_ACCT_FL}"></td>
+                            <td th:text="${t.DISTRIBUTE_AMT_BY_NO}"></td>
+                            <td th:text="${t.NON_FISCAL_REVENUE_FL}"></td>
+                            <td th:text="${t.INITIAL_SUSPENSION}"></td>
+                            <td th:text="${t.DELAY_DORMANCY}"></td>
+                            <td th:text="${t.ALLOW_ASSESS_FCY}"></td>
+                            <td th:text="${t.CURRENCY_NO}"></td>
+                            <td th:text="${t.TAX_AGENT_PGM_FL}"></td>
+                            <td th:text="${t.USED_BY_ETAX_FL}"></td>
+                            <td th:text="${t.CFWD_PAYM_WITH_CREDIT_FL}"></td>
+                            <td th:text="${t.DISTRIB_CF_ON_TAX_ONLY_FL}"></td>
+                            <td th:text="${t.AUTO_CARRY_FWD_FL}"></td>
+                            <td th:text="${t.EXT_TAX_CODE}"></td>
+                            <td th:text="${t.SUSPENDED_TAX}"></td>
+                            <td th:text="${t.EXEMPTED_TAX}"></td>
+                            <td th:text="${t.APPLY_DUE_DT_YRBF_FL}"></td>
+                            <td th:text="${t.IMM_ASSESS_LP_FL}"></td>
+                            <td th:text="${t.USES_CREDIT_FL}"></td>
+                            <td th:text="${t.ALLOW_MULTI_TAX_TYPE_CENTRE}"></td>
+                            <td th:text="${t.TAX_CATEGORY_NO}"></td>
+                            <td th:text="${t.TAX_PERIOD_MANDATORY_FL}"></td>
+                            <td th:text="${t.PEN_INT_CALCS_INCLUDE_CREDIT}"></td>
+                            <td th:text="${t.TAX_TYPE_CODE}"></td>
+                            <td th:text="${t.LEASE_TYPE_NO}"></td>
+                            <td th:text="${t.PAYMENT_FREQ_NO}"></td>
+                            <td th:text="${t.MUST_ENTER_TIN_FOR_IMMED_ASSM}"></td>
+                            <td th:text="${t.BYPASS_TCC_FL}"></td>
+                            <td th:text="${t.THIRD_PARTY_FL}"></td>
+                            <td th:text="${t.LICENSE_TYPE_NO}"></td>
+                            <td th:text="${t.AUTO_ASSES_CREATE_FL}"></td>
+                            <td th:text="${t.LIC_BASE_AS_ENT_ACTIVITY_FL}"></td>
+                            <td th:text="${t.PAYMENT_BASED_ON}"></td>
+                            <td th:text="${t.CAR_TAX_STICKER_FL}"></td>
+                            <td th:text="${t.STAMP_FL}"></td>
+                            <td th:text="${t.FEE_CERTIFICATE_FL}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

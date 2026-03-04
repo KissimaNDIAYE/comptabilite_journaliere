@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Catégories</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des catégories d’impôts
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <!--<a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{showCreateCategorie}">Créer une catégorie</a>-->
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListeCategorie}">Liste des catégories</a>
+    </div>
+
+    <form th:action="@{saveCategorie}" method="post">
+        <div class="row" style="font-size: 0.9em">
+            <!-- Liste des catégories -->
+            <div class="card col-12">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TYPE D'IMPOT</th>
+                            <th>VALEUR FIXE</th>
+                            <!--<th>Action</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="c : ${categories}">
+                            <td th:text="${c.TAX_CATEGORY_NO}"></td>
+                            <td th:text="${c.TAX_CATEGORY_DESC}"></td>
+                            <td th:text="${c.FIXED_VALUE_FL}"></td>
+<!--                            <td>
+                                <a class="btn btn-warning btn-sm"
+                                   th:href="@{|/editCategorie/${c.TAX_CATEGORY_NO}|}">Modifier</a>
+                                <a class="btn btn-danger btn-sm"
+                                   th:href="@{|/deleteCategorie/${c.TAX_CATEGORY_NO}|}"
+                                   onclick="return confirm('Êtes-vous sûr ?');">Supprimer</a>
+                            </td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>Comptabilite</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size: 1.1em;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Brand -->
+            <a class="navbar-brand" th:href="@{showCreateIndex}" style="font-family: monospace; font-size: 1em">Comptabilite</a>
+            <!-- Links -->
+            <ul class="navbar-nav" style="font-family: monospace; font-size: 0.8em; font-weight: bold; color: red">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{showCreateIndex}">Accueil</a>
+                </li>
+                <!-- Dropdown CATEGORIES -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CATEGORIES
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                        <a class="dropdown-item" th:href="@{ListeCategorie}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown BUDGET -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBudget" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        BUDGET
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownBudget">
+                        <a class="dropdown-item" th:href="@{ListeType_Budget}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown IMPÔTS -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownImpots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        IMPÔTS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownImpots">
+                        <a class="dropdown-item" th:href="@{ListeType_Impot}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown TRANSACTIONS -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransactions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        TRANSACTIONS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownTransactions">
+                        <a class="dropdown-item" th:href="@{ListeTransaction}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown SOUS-TRANSACTIONS -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSousTransactions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        SOUS-TRANSACTIONS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownSousTransactions">
+                        <a class="dropdown-item" th:href="@{ListeSous_transaction}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown EMISSIONS -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEmissions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        EMISSIONS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownEmissions">
+                        <a class="dropdown-item" th:href="@{ListeEmission}">Lister</a>
+                    </div>
+                </li>
+                <!-- Dropdown MV_CONSOLIDES -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvConsolides" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        MV_CONSOLIDES
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMvConsolides">
+                        <a class="dropdown-item" th:href="@{ListeMVConsolideImpotDirect}">Impôt direct</a>
+                        <!-- Nouveau bouton d'export Excel -->
+                        <!-- <a class="dropdown-item" th:href="@{/export/impotDirect/excel}">
+                            <i class="fas fa-file-excel"></i> Exporter Impôts Directs (Excel)
+                        </a> -->
+                        <a class="dropdown-item" th:href="@{ListeMVConsolideImpotIndirect}">Impôt indirect</a>
+                        <a class="dropdown-item" th:href="@{ListeMVConsolideDroitEtTimbre}">Droits et Timbres</a>
+                        <a class="dropdown-item" th:href="@{ListeMVConsolide}">Actualiser</a>
+                    </div>
+                </li>
+                <!-- Dropdown MV_CONSOLIDES -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvConsolides" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Export Excel
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMvConsolides">
+                        <a class="dropdown-item" th:href="@{/export/impotDirect}">Exporter Impôts Directs</a>
+                        <a class="dropdown-item" th:href="@{/export/impotIndirect}">Exporter Impôts Indirects</a>
+                        <a class="dropdown-item" th:href="@{/export/droitTimbre}">Exporter Droits et Timbres</a>
+                    </div>
+                </li>
+                <!-- Dropdown MV_PAIEMENTS -->
+                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvPaiements" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        MV_PAIEMENTS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMvPaiements">
+                        <a class="dropdown-item" th:href="@{ListeMVPaiement}">Lister</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span sec:authentication="name"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
+                        <a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="@{login}" style="font-size: 0.7em; font-weight: bold">Connexion</a>
+                        <a sec:authorize="isAuthenticated()" class="dropdown-item" th:href="@{logout}" style="font-size: 0.7em; font-weight: bold">Déconnexion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section layout:fragment="Mycontent">
+        <!-- Le contenu spécifique à chaque page sera injecté ici -->
+    </section>
+
+    <!-- JavaScript - Une seule fois et à la fin du body -->
+    <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.5.6/js/dataTables.colReorder.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Vérifier si le tableau existe avant d'initialiser DataTables
+            if ($("#d1Table").length > 0) {
+                $("#d1Table").DataTable({
+                    colReorder: true,
+                    columnDefs: [
+                        {
+                            targets: -1, // Dernière colonne
+                            orderable: false, // Désactiver le tri pour la dernière colonne
+                        }
+                    ],
+                });
+            }
+        });
+    </script>
+</body>
+</html>

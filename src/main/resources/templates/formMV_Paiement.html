@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des paiements</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des paiements
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListePaiement}">paiements</a>
+    </div>
+
+    <form th:action="@{savePaiement}" method="post">
+        <div class="row" style="font-size: 0.8em">
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>ROWID</th>
+                            <th>DATE_DU_PAIEMENT</th>
+                            <th>HEURE_DU_PAIEMENT</th>
+                            <th>NUMERO_FISCAL</th>
+                            <th>PARTIE_VERSANTE</th>
+                            <th>NO_RECU</th>
+                            <th>MONTANT</th>
+                            <th>MODE_DE_PAIEMENT</th>
+                            <th>NO_COMPTE_IMPOT</th>
+                            <th>TYPE_DE_TRANSACTION</th>
+                            <th>NATURE</th>
+                            <th>CENTRE_DE_PAIEMENT</th>
+                            <th>TYPE_IMPOT</th>
+                            <th>MOIS_IMPOSITION</th>
+                            <th>ANNEE_IMPOSITION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${paiements}">
+                            <td th:text="${t.rowId}"></td>
+                            <td th:text="${t.dateDuPaiement}"></td>
+                            <td th:text="${t.heureDuPaiement}"></td>
+                            <td th:text="${t.numeroFiscal}"></td>
+                            <td th:text="${t.partieVersante}"></td>
+                            <td th:text="${t.noRecu}"></td>
+                            <td th:text="${t.montant}"></td>
+                            <td th:text="${t.modeDePaiement}"></td>
+                            <td th:text="${t.noCompteImpot}"></td>
+                            <td th:text="${t.typeDeTransaction}"></td>
+                            <td th:text="${t.nature}"></td>
+                            <td th:text="${t.centreDePaiement}"></td>
+                            <td th:text="${t.typeImpot}"></td>
+                            <td th:text="${t.moisImposition}"></td>
+                            <td th:text="${t.anneeImposition}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

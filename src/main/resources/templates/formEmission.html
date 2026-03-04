@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des emissions</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+    <div class="container mt-5 col-md-12">
+        <div class="card" style="border: 1px solid beige;">
+            <span style="font-size: 1.5em; font-family: monospace; color: black; margin: auto;">
+                Formulaire de gestion des emissions
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <a class="btn btn-info" style="font-family: monospace; font-size: 1em;" th:href="@{ListeEmission}">emissions</a>
+    </div>
+
+    <form th:action="@{saveEmission}" method="post">
+        <div class="row" style="font-size: 0.8em">
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>ASSESS_NO</th>
+                            <th>ASSESS_TYPE_NO</th>
+                            <th>TAX_PAYER_NO</th>
+                            <th>TAX_TYPE_NO</th>
+                            <th>TAX_PERIOD_NO</th>
+                            <th>ENTRY_DATE</th>
+                            <th>ENTRY_USER</th>
+                            <th>ASSESS_NEW_ASSESS_NO</th>  
+                            <th>BATCH_NO</th>
+                            <th>COLLECTION_CASE_NO</th>
+                            <th>ESTAB_NO</th>
+                            <th>A_TAX_TO_PAY</th>
+                            <th>RECEPTION_DATE</th>
+                            <th>PREPARED_BY</th>
+                            <th>TAX_TO_PAY</th>
+                            <th>TAX_PAID</th>
+                            <th>PEN_TO_PAY</th>
+                            <th>PEN_PAID</th>
+                            <th>INT_TO_PAY</th>
+                            <th>INT_PAID</th>
+                            <th>BALANCE</th>
+                            <th>TP_START_DATE</th>
+                            <th>TP_END_DATE</th>
+                            <th>TP_DUE_DATE</th>
+                            <th>ASSESS_COMMENT</th>
+                            <th>CALC_STATUS_NO</th>
+                            <th>LIC_BASE_NO</th>
+                            <th>INT_DATE</th>
+                            <th>PAY_PEN_DATE</th>
+                            <th>FILE_PEN_DATE</th>
+                            <th>FORM_NO</th>
+                            <th>VERSION_NO</th>
+                            <th>LAST_TAX_BALANCE</th>
+                            <th>LAST_PEN_BALANCE</th>
+                            <th>LAST_INT_BALANCE</th>
+                            <th>PLAST_TAX_BALANCE</th>
+                            <th>PLAST_PEN_BALANCE</th>
+                            <th>PLAST_INT_BALANCE</th>
+                            <th>TAX_CENTRE_NO</th>
+                            <th>LICENSE_NO</th>
+                            <th>TAX_ACCOUNT_NO</th>
+                            <th>TP_PAYMENT_DATE</th>
+                            <th>INT_DATE_TEMP</th>
+                            <th>LAST_PEN_INT_CALC_DATE</th>
+                            <th>LAST_CALC_DATE</th>
+                            <th>TRIGGERING_ASSESS_NO</th>
+                            <th>REASSESS_RQST_EMPLEE_NO</th>
+                            <th>REASSESS_REASON_NO</th>
+                            <th>RANGE_START_TAX_PERIOD_NO</th>
+                            <th>REASSESS_AUTH_FL</th>
+                            <th>SUPPORT_DOC_NO</th>
+                            <th>TAXABLE_OBJECT_NO</th>
+                            <th>COLLECTION_LOCATION_NO</th>
+                            <th>LETTER_NO</th>
+                            <th>LIC_RATE_NO</th>
+                            <th>REASS_CREATION_DATE</th>
+                            <th>ASSESS_COMMENT_1</th>
+                            <th>UPDATE_DATE</th>
+                            <th>UPDATE_USER</th>
+                            <th>ETAX_SUBM_TMSTMP</th>
+                            <th>ETAX_SUBM_ID</th>
+                            <th>CURRENCY_NO</th>
+                            <th>EXCH_RATE</th>
+                            <th>LAST_GET_BAL_CALC_DATE</th>
+                            <th>TAX_CREDIT</th>
+                            <th>PEN_CREDIT</th>
+                            <th>INT_CREDIT</th>
+                            <th>TAX_PAYM</th>
+                            <th>PEN_PAYM</th>
+                            <th>INT_PAYM</th>
+                            <th>OVER_PAYM</th>
+                            <th>OVER_CREDIT</th>
+                            <th>DISTRIB_UPTODATE_FL</th>
+                            <th>ASSESS_OVER_PAYM</th>
+                            <th>ASSESS_OVER_CREDIT</th>
+                            <th>ASSESS_TRANS_DATE</th>
+                            <th>PROP_PART_NO</th>
+                            <th>ASSESS_NO_REMITT_FL</th>
+                            <th>ORIG_TAX_CENTRE_NO</th>
+                            <th>TXBL_OBJ_ACTION_OWNER_NO</th>
+                            <th>TAXPAYER_CONSENT_FL</th>
+                            <th>NON_TAXPYR_NO</th>
+                            <th>WORKER_COUNT</th>
+                            <th>WORKER_COUNT_DESC</th>
+                            <th>ETAX_CALCULATION_TEST_FL</th>
+                            <th>ETAX_SUBM_USER</th>
+                            <th>ETAX_SUBM_USER_ID</th>
+                            <th>ETAX_DECL_SUBM_ID</th>
+                            <th>LAST_PEN_INT_CALC_TIME</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${emissions}">
+                            <td th:text="${t.ASSESS_NO}"></td>
+                            <td th:text="${t.ASSESS_TYPE_NO}"></td>
+                            <td th:text="${t.TAX_PAYER_NO}"></td>
+                            <td th:text="${t.TAX_PERIOD_NO}"></td>
+                            <td th:text="${t.ENTRY_DATE}"></td>
+                            <td th:text="${t.ENTRY_USER}"></td>
+                            <td th:text="${t.ASSESS_NEW_ASSESS_NO}"></td>
+                            <td th:text="${t.BATCH_NO}"></td>
+                            <td th:text="${t.COLLECTION_CASE_NO}"></td>
+                            <td th:text="${t.ESTAB_NO}"></td>
+                            <td th:text="${t.A_TAX_TO_PAY}"></td>
+                            <td th:text="${t.RECEPTION_DATE}"></td>
+                            <td th:text="${t.PREPARED_BY}"></td>
+                            <td th:text="${t.TAX_TO_PAY}"></td>
+                            <td th:text="${t.TAX_PAID}"></td>
+                            <td th:text="${t.PEN_TO_PAY}"></td>
+                            <td th:text="${t.PEN_PAID}"></td>
+                            <td th:text="${t.INT_TO_PAY}"></td>
+                            <td th:text="${t.INT_PAID}"></td>
+                            <td th:text="${t.BALANCE}"></td>
+                            <td th:text="${t.TP_START_DATE}"></td>
+                            <td th:text="${t.TP_END_DATE}"></td>
+                            <td th:text="${t.TP_DUE_DATE}"></td>
+                            <td th:text="${t.ASSESS_COMMENT}"></td>
+                            <td th:text="${t.CALC_STATUS_NO}"></td>
+                            <td th:text="${t.LIC_BASE_NO}"></td>
+                            <td th:text="${t.INT_DATE}"></td>
+                            <td th:text="${t.PAY_PEN_DATE}"></td>
+                            <td th:text="${t.FILE_PEN_DATE}"></td>
+                            <td th:text="${t.FORM_NO}"></td>
+                            <td th:text="${t.VERSION_NO}"></td>
+                            <td th:text="${t.LAST_TAX_BALANCE}"></td>
+                            <td th:text="${t.LAST_PEN_BALANCE}"></td>
+                            <td th:text="${t.LAST_INT_BALANCE}"></td>
+                            <td th:text="${t.PLAST_TAX_BALANCE}"></td>
+                            <td th:text="${t.PLAST_PEN_BALANCE}"></td>
+                            <td th:text="${t.PLAST_INT_BALANCE}"></td>
+                            <td th:text="${t.TAX_CENTRE_NO}"></td>
+                            <td th:text="${t.LICENSE_NO}"></td>
+                            <td th:text="${t.TAX_ACCOUNT_NO}"></td>
+                            <td th:text="${t.TP_PAYMENT_DATE}"></td>
+                            <td th:text="${t.INT_DATE_TEMP}"></td>
+                            <td th:text="${t.LAST_PEN_INT_CALC_DATE}"></td>
+                            <td th:text="${t.LAST_CALC_DATE}"></td>
+                            <td th:text="${t.TRIGGERING_ASSESS_NO}"></td>
+                            <td th:text="${t.REASSESS_RQST_EMPLEE_NO}"></td>
+                            <td th:text="${t.REASSESS_REASON_NO}"></td>
+                            <td th:text="${t.RANGE_START_TAX_PERIOD_NO}"></td>
+                            <td th:text="${t.REASSESS_AUTH_FL}"></td>
+                            <td th:text="${t.SUPPORT_DOC_NO}"></td>
+                            <td th:text="${t.TAXABLE_OBJECT_NO}"></td>
+                            <td th:text="${t.COLLECTION_LOCATION_NO}"></td>
+                            <td th:text="${t.LETTER_NO}"></td>
+                            <td th:text="${t.LIC_RATE_NO}"></td>
+                            <td th:text="${t.REASS_CREATION_DATE}"></td>
+                            <td th:text="${t.ASSESS_COMMENT_1}"></td>
+                            <td th:text="${t.UPDATE_DATE}"></td>
+                            <td th:text="${t.UPDATE_USER}"></td>
+                            <td th:text="${t.ETAX_SUBM_TMSTMP}"></td>
+                            <td th:text="${t.ETAX_SUBM_ID}"></td>
+                            <td th:text="${t.CURRENCY_NO}"></td>
+                            <td th:text="${t.EXCH_RATE}"></td>
+                            <td th:text="${t.LAST_GET_BAL_CALC_DATE}"></td>
+                            <td th:text="${t.TAX_CREDIT}"></td>
+                            <td th:text="${t.PEN_CREDIT}"></td>
+                            <td th:text="${t.INT_CREDIT}"></td>
+                            <td th:text="${t.TAX_PAYM}"></td>
+                            <td th:text="${t.PEN_PAYM}"></td>
+                            <td th:text="${t.INT_PAYM}"></td>
+                            <td th:text="${t.OVER_PAYM}"></td>
+                            <td th:text="${t.OVER_CREDIT}"></td>
+                            <td th:text="${t.DISTRIB_UPTODATE_FL}"></td>
+                            <td th:text="${t.ASSESS_OVER_PAYM}"></td>
+                            <td th:text="${t.ASSESS_OVER_CREDIT}"></td>
+                            <td th:text="${t.ASSESS_TRANS_DATE}"></td>
+                            <td th:text="${t.PROP_PART_NO}"></td>
+                            <td th:text="${t.ASSESS_NO_REMITT_FL}"></td>
+                            <td th:text="${t.ORIG_TAX_CENTRE_NO}"></td>
+                            <td th:text="${t.TXBL_OBJ_ACTION_OWNER_NO}"></td>
+                            <td th:text="${t.TAXPAYER_CONSENT_FL}"></td>
+                            <td th:text="${t.NON_TAXPYR_NO}"></td>
+                            <td th:text="${t.WORKER_COUNT}"></td>
+                            <td th:text="${t.NON_TAXPYR_NO}"></td>
+                            <td th:text="${t.WORKER_COUNT_DESC}"></td>
+                            <td th:text="${t.ETAX_CALCULATION_TEST_FL}"></td>
+                            <td th:text="${t.ETAX_SUBM_USER}"></td>
+                            <td th:text="${t.ETAX_SUBM_USER_ID}"></td>
+                            <td th:text="${t.ETAX_DECL_SUBM_ID}"></td>
+                            <td th:text="${t.LAST_PEN_INT_CALC_TIME}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>
