@@ -61,15 +61,44 @@ public class MV_ConsolideServicesImpl implements MV_ConsolideServices {
     }
     
 
-    @Override
-    public List<MV_Consolide> recuperImpotDirect() {
-        return mv_consolideRepository.recuperImpotDirect();
+    // @Override
+    public List<Object[]> recuperImpotDirect(Integer annee, Integer mois, String structure) {
+        return mv_consolideRepository.recuperImpotDirect(annee, mois, structure);
+    }
+    // @Override
+    public List<Object[]> recuperImpotIndirect(Integer annee, Integer mois, String structure) {
+        return mv_consolideRepository.recuperImpotIndirect(annee, mois, structure);
+    }
+    // @Override
+    public List<Object[]> recuperDroitEtTimbre(Integer annee, Integer mois, String structure) {
+        return mv_consolideRepository.recuperDroitEtTimbre(annee, mois, structure);
     }
 
+
     @Override
-    public List<MV_Consolide> recuperImpotIndirect() {
-        return mv_consolideRepository.recuperImpotIndirect();
-    }
+    public List<Integer> recuperMois() {
+        return mv_consolideRepository.recuperMois();
+    }  
+
+    @Override
+    public List<Integer> recuperAnnee() {
+        return mv_consolideRepository.recuperAnnee();
+    } 
+    
+    @Override
+    public List<String> recuperStructures() {
+        return mv_consolideRepository.recuperStructures();
+    }  
+
+    // @Override
+    //     public List<Object[]> recuperImpotDirect() {
+    //         return mv_consolideRepository.recuperImpotDirect();
+    //     }
+
+    // @Override
+    // public List<MV_Consolide> recuperImpotIndirect() {
+    //     return mv_consolideRepository.recuperImpotIndirect();
+    // }
     
     @Override
     public List<MV_Consolide> recuperDroitEtTimbre() {
@@ -95,6 +124,11 @@ public class MV_ConsolideServicesImpl implements MV_ConsolideServices {
     public List<MV_Consolide> recuperMV_ConsolidesParStructureMoisAnnee(String structure, int mois, int annee) {
         return mv_consolideRepository.recuperMV_ConsolidesParStructureMoisAnnee(structure, mois, annee);
     }
+
+    @Override
+        public List<Object[]> recuperObjetMV_ConsolidesParStructureMoisAnnee(String structure, int mois, int annee) {
+            return mv_consolideRepository.recuperObjetMV_ConsolidesParStructureMoisAnnee(structure, mois, annee);
+        }
 
     @Override
     public List<MV_Consolide> recuperDonneesParStructureMoisAnnee(String structure, int mois, int annee) {

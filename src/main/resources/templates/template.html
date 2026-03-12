@@ -13,84 +13,84 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Brand -->
-            <a class="navbar-brand" th:href="@{showCreateIndex}" style="font-family: monospace; font-size: 1em">Comptabilite</a>
+            <a class="navbar-brand" th:href="@{ListeMVConsolideImpotIndirect}" style="font-family: monospace; font-size: 1em">Comptabilite</a>
             <!-- Links -->
             <ul class="navbar-nav" style="font-family: monospace; font-size: 0.8em; font-weight: bold; color: red">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{showCreateIndex}">Accueil</a>
+                    <a class="nav-link" th:href="@{ListeMVConsolideImpotIndirect}">Accueil</a>
                 </li>
                 <!-- Dropdown CATEGORIES -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         CATEGORIES
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
                         <a class="dropdown-item" th:href="@{ListeCategorie}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown BUDGET -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBudget" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         BUDGET
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownBudget">
                         <a class="dropdown-item" th:href="@{ListeType_Budget}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown IMPÔTS -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownImpots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         IMPÔTS
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownImpots">
                         <a class="dropdown-item" th:href="@{ListeType_Impot}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown TRANSACTIONS -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransactions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         TRANSACTIONS
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownTransactions">
                         <a class="dropdown-item" th:href="@{ListeTransaction}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown SOUS-TRANSACTIONS -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSousTransactions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         SOUS-TRANSACTIONS
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSousTransactions">
                         <a class="dropdown-item" th:href="@{ListeSous_transaction}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown EMISSIONS -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEmissions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         EMISSIONS
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownEmissions">
                         <a class="dropdown-item" th:href="@{ListeEmission}">Lister</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown MV_CONSOLIDES -->
                 <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvConsolides" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         MV_CONSOLIDES
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMvConsolides">
-                        <a class="dropdown-item" th:href="@{ListeMVConsolideImpotDirect}">Impôt direct</a>
+                        <!-- <a class="dropdown-item" th:href="@{ListeMVConsolideImpotDirect}">Impôt direct</a> -->
                         <!-- Nouveau bouton d'export Excel -->
                         <!-- <a class="dropdown-item" th:href="@{/export/impotDirect/excel}">
                             <i class="fas fa-file-excel"></i> Exporter Impôts Directs (Excel)
                         </a> -->
-                        <a class="dropdown-item" th:href="@{ListeMVConsolideImpotIndirect}">Impôt indirect</a>
-                        <a class="dropdown-item" th:href="@{ListeMVConsolideDroitEtTimbre}">Droits et Timbres</a>
-                        <a class="dropdown-item" th:href="@{ListeMVConsolide}">Actualiser</a>
+                        <!-- <a class="dropdown-item" th:href="@{ListeMVConsolideImpotIndirect}">Impôt indirect</a> -->
+                        <!-- <a class="dropdown-item" th:href="@{ListeMVConsolideDroitEtTimbre}">Droits et Timbres</a> -->
+                        <a class="dropdown-item" th:href="@{ListeMVConsolideImpotDirect}">Actualiser</a>
                     </div>
                 </li>
                 <!-- Dropdown MV_CONSOLIDES -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvConsolides" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Export Excel
                     </a>
@@ -99,16 +99,16 @@
                         <a class="dropdown-item" th:href="@{/export/impotIndirect}">Exporter Impôts Indirects</a>
                         <a class="dropdown-item" th:href="@{/export/droitTimbre}">Exporter Droits et Timbres</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- Dropdown MV_PAIEMENTS -->
-                <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
+                <!-- <li sec:authorize="hasRole('SECRETAIRE')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMvPaiements" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         MV_PAIEMENTS
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMvPaiements">
                         <a class="dropdown-item" th:href="@{ListeMVPaiement}">Lister</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">

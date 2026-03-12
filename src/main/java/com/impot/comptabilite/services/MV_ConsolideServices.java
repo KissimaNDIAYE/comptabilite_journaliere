@@ -25,9 +25,20 @@ public interface MV_ConsolideServices {
     List<MV_Consolide> getAllMV_Consolide();
     
     List<MV_Consolide> recuperMV_Consolides();
-    List<MV_Consolide> recuperImpotDirect();
-    List<MV_Consolide> recuperImpotIndirect();
+    // List<MV_Consolide> recuperImpotDirect();
+    List<Object[]> recuperImpotDirect(Integer annee, Integer mois, String structure);
+    List<Object[]> recuperImpotIndirect(Integer annee, Integer mois, String structure);
+    // List<MV_Consolide> recuperImpotIndirect();
+    List<Object[]> recuperDroitEtTimbre(Integer annee, Integer mois, String structure);
     List<MV_Consolide> recuperDroitEtTimbre();
+
+    List<Object[]> recuperObjetMV_ConsolidesParStructureMoisAnnee(String structure, int mois, int annee);
+
+    List<Integer> recuperMois();
+    List<Integer> recuperAnnee();
+    List<String> recuperStructures();
+
+
 
     List<MV_Consolide> recuperMV_ConsolidesParStructure(String structure);
     List<MV_Consolide> recuperMV_ConsolidesParCodeImput(String codeImput);

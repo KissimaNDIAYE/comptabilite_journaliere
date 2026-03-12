@@ -42,65 +42,31 @@
                                     <!-- <label for="structure" style="font-family: monospace; font-size: 1em;">Structure :</label> -->
                                     <select required="required" class="form-control" id="structure" name="structure">
                                         <option value="">Sélectionnez une structure</option>
-                                        <option value="DID-CENTRE 1">DID-CENTRE 1</option>
-                                        <option value="DID-CENTRE 2">DID-CENTRE 2</option>
-                                        <option value="DID-CENTRE 3">DID-CENTRE 3</option>
-                                        <option value="DID-CENTRE 4">DID-CENTRE 4</option>
-                                        <option value="DID-CENTRE 5">DID-CENTRE 5</option>
-                                        <option value="DID-CENTRE 6">DID-CENTRE 6</option>
-                                        <option value="KATI">KATI</option>
-                                        <option value="KAYES">KAYES</option>
-                                        <option value="KAYES">KAYES</option>
-                                        <option value="KOULIKORO">KOULIKORO</option>
-                                        <option value="SIKASSO">SIKASSO</option>
-                                        <option value="SEGOU">SEGOU</option>
-                                        <option value="MOPTI">MOPTI</option>
-                                        <option value="TOMBOUCTOU">TOMBOUCTOU</option>
-                                        <option value="GAO">GAO</option>
-                                        <option value="KIDAL">KIDAL</option>
-                                        <option value="BOUGOUN">BOUGOUN</option>
-                                        <option value="KOUTIALA">KOUTIALA</option>
-                                        <option value="KITA">KITA</option>
-                                        <option value="SAN">SAN</option>
-                                        <option value="NIORO">NIORO</option>
-                                        <option value="MENAKA">MENAKA</option>
-                                        <option value="NARA">NARA</option>
+                                        <option th:each="s : ${structures}"
+                                            th:value="${s}" th:text="${s}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <!-- <label for="annee" style="font-family: monospace; font-size: 1em;">Année :</label> -->
-                                    <select required="required"class="form-control" id="annee" name="annee">
+                                    <select required="required" class="form-control" id="annee" name="annee">
                                         <option value="">Sélectionnez une année</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025">2025</option>
+                                        <option th:each="annee : ${annees}"
+                                            th:value="${annee}" th:text="${annee}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             
                             <div class="col-12">
                                 <div class="form-group">
-                                    <!-- <label for="mois" style="font-family: monospace; font-size: 1em;">Mois :</label> -->
                                     <select required="required" class="form-control" id="mois" name="mois">
                                         <option value="">Sélectionnez un mois</option>
-                                        <option value="1">Janvier</option>
-                                        <option value="2">Février</option>
-                                        <option value="3">Mars</option>
-                                        <option value="4">Avril</option>
-                                        <option value="5">Mai</option>
-                                        <option value="6">Juin</option>
-                                        <option value="7">Juillet</option>
-                                        <option value="8">Août</option>
-                                        <option value="9">Septembre</option>
-                                        <option value="10">Octobre</option>
-                                        <option value="11">Novembre</option>
-                                        <option value="12">Décembre</option>
+                                        <option th:each="mois : ${mois}"
+                                            th:value="${mois}" th:text="${mois}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -127,73 +93,39 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <!-- <label for="structure" style="font-family: monospace; font-size: 1em;">Structure :</label> -->
-                                    <select required="required"class="form-control" id="structure" name="structure">
+                                    <select required="required" class="form-control" id="structure" name="structure">
                                         <option value="">Sélectionnez une structure</option>
-                                        <option value="DID-CENTRE 1">DID-CENTRE 1</option>
-                                        <option value="DID-CENTRE 2">DID-CENTRE 2</option>
-                                        <option value="DID-CENTRE 3">DID-CENTRE 3</option>
-                                        <option value="DID-CENTRE 4">DID-CENTRE 4</option>
-                                        <option value="DID-CENTRE 5">DID-CENTRE 5</option>
-                                        <option value="DID-CENTRE 6">DID-CENTRE 6</option>
-                                        <option value="KATI">KATI</option>
-                                        <option value="KAYES">KAYES</option>
-                                        <option value="KAYES">KAYES</option>
-                                        <option value="KOULIKORO">KOULIKORO</option>
-                                        <option value="SIKASSO">SIKASSO</option>
-                                        <option value="SEGOU">SEGOU</option>
-                                        <option value="MOPTI">MOPTI</option>
-                                        <option value="TOMBOUCTOU">TOMBOUCTOU</option>
-                                        <option value="GAO">GAO</option>
-                                        <option value="KIDAL">KIDAL</option>
-                                        <option value="BOUGOUN">BOUGOUN</option>
-                                        <option value="KOUTIALA">KOUTIALA</option>
-                                        <option value="KITA">KITA</option>
-                                        <option value="SAN">SAN</option>
-                                        <option value="NIORO">NIORO</option>
-                                        <option value="MENAKA">MENAKA</option>
-                                        <option value="NARA">NARA</option>
+                                        <option th:each="s : ${structures}"
+                                            th:value="${s}" th:text="${s}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <!-- <label for="annee" style="font-family: monospace; font-size: 1em;">Année :</label> -->
                                     <select required="required" class="form-control" id="annee" name="annee">
                                         <option value="">Sélectionnez une année</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025">2025</option>
+                                        <option th:each="annee : ${annees}"
+                                            th:value="${annee}" th:text="${annee}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             
                             <div class="col-12">
                                 <div class="form-group">
-                                    <!-- <label for="mois" style="font-family: monospace; font-size: 1em;">Mois :</label> -->
                                     <select required="required" class="form-control" id="mois" name="mois">
                                         <option value="">Sélectionnez un mois</option>
-                                        <option value="1">Janvier</option>
-                                        <option value="2">Février</option>
-                                        <option value="3">Mars</option>
-                                        <option value="4">Avril</option>
-                                        <option value="5">Mai</option>
-                                        <option value="6">Juin</option>
-                                        <option value="7">Juillet</option>
-                                        <option value="8">Août</option>
-                                        <option value="9">Septembre</option>
-                                        <option value="10">Octobre</option>
-                                        <option value="11">Novembre</option>
-                                        <option value="12">Décembre</option>
+                                        <option th:each="mois : ${mois}"
+                                            th:value="${mois}" th:text="${mois}">
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-12 mt-3">
-                                <button type="submit" class="btn btn-success w-100">
-                                    Exporter en Excel
+                                <button type="submit" name="action" value="filtrer" class="btn btn-success w-100" style="font-family: monospace; font-size: 1em;">
+                                    Exporter
                                 </button>
                             </div>
                         </div>
@@ -212,14 +144,16 @@
 
             <div class="card col-12">
                 <div class="card-body table-responsive">
+                    <span style="font-size: 1.5em; font-weight: bold;">Impôts Directs</span>
                     <table class="table table-bordered table-striped table-sm" id="d1Table">
                         <thead>
                         <tr>
                             <!-- <th>ID</th> -->
+                            <!-- <th>Montant total</th> -->
                             <th>STRUCTURE</th>
-                            <th>LOT</th>
-                            <th>TYPE_LOT</th>
-                            <th>CODE_LIGNE_IMP</th>
+                            <!-- <th>LOT</th> -->
+                            <!-- <th>TYPE_LOT</th> -->
+                            <!-- <th>CODE_LIGNE_IMP</th> -->
                             <th>CODE_IMPUT</th>
                             <th>LIBELLE_COMP_IMP</th>
                             <th>MOIS</th>
@@ -232,7 +166,7 @@
                         <tbody>
                         <tr th:each="t : ${mvConsolides}">
                             <!-- <td th:text="${t.id}"></td> -->
-                            <td th:text="${t.structure}"></td>
+                            <!-- <td th:text="${t.structure}"></td>
                             <td th:text="${t.lot}"></td>
                             <td th:text="${t.typeLot}"></td>
                             <td th:text="${t.codeLigneImp}"></td>
@@ -242,10 +176,148 @@
                             <td th:text="${t.annee}"></td>
                             <td th:text="${t.categorieImpot}"></td>
                             <td th:text="${t.budget}"></td>
-                            <td th:text="${t.montant}"></td>
+                            <td th:text="${t.montant}"></td> -->
+                            <td th:text="${t[0]}"></td>
+                            <td th:text="${t[1]}"></td>
+                            <td th:text="${t[2]}"></td>
+                            <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <!-- <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <td th:text="${t[8]}"></td>
+                            <td th:text="${t[9]}"></td>
+                            <td th:text="${t[10]}"></td>
+                            <td th:text="${t[11]}"></td> -->
                         </tr>
                         </tbody>
                     </table>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;">Montant Total :</span>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;" th:text="${#numbers.formatDecimal(totalMontant, 1, 'COMMA', 2, 'POINT')}"></span>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <span style="font-size: 1.5em; font-weight: bold;">Impôts Indirects</span>
+                    <table class="table table-bordered table-striped table-sm" id="d1Table">
+                        <thead>
+                        <tr>
+                            <!-- <th>Montant total</th> -->
+                            <th>STRUCTURE</th>
+                            <!-- <th>LOT</th> -->
+                            <!-- <th>TYPE_LOT</th> -->
+                            <!-- <th>CODE_LIGNE_IMP</th> -->
+                            <th>CODE_IMPUT</th>
+                            <th>LIBELLE_COMP_IMP</th>
+                            <th>MOIS</th>
+                            <th>ANNEE</th>
+                            <th>CATEGORIE_IMPOT</th>
+                            <th>BUDGET</th>
+                            <th>MONTANT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${mvConsolidesIndirects}">
+                            <!-- <td th:text="${t.id}"></td> -->
+                            <!-- <td th:text="${t.structure}"></td>
+                            <td th:text="${t.lot}"></td>
+                            <td th:text="${t.typeLot}"></td>
+                            <td th:text="${t.codeLigneImp}"></td>
+                            <td th:text="${t.codeImput}"></td>
+                            <td th:text="${t.libelleCompImp}"></td>
+                            <td th:text="${t.mois}"></td>
+                            <td th:text="${t.annee}"></td>
+                            <td th:text="${t.categorieImpot}"></td>
+                            <td th:text="${t.budget}"></td>
+                            <td th:text="${t.montant}"></td> -->
+                            <td th:text="${t[0]}"></td>
+                            <td th:text="${t[1]}"></td>
+                            <td th:text="${t[2]}"></td>
+                            <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <!-- <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <td th:text="${t[8]}"></td>
+                            <td th:text="${t[9]}"></td>
+                            <td th:text="${t[10]}"></td>
+                            <td th:text="${t[11]}"></td> -->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;">Montant Total :</span>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;" th:text="${#numbers.formatDecimal(totalMontant2, 1, 'COMMA', 2, 'POINT')}"></span>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <div class="card-body table-responsive">
+                    <span style="font-size: 1.5em; font-weight: bold;">Droits d'enregistrement et Timbres</span>
+                    <table class="table table-bordered table-striped table-sm" id="d1Table">
+                        <thead>
+                        <tr>
+                            <!-- <th>ID</th> -->
+                            <!-- <th>Montant total</th> -->
+                            <th>STRUCTURE</th>
+                            <!-- <th>LOT</th> -->
+                            <!-- <th>TYPE_LOT</th> -->
+                            <!-- <th>CODE_LIGNE_IMP</th> -->
+                            <th>CODE_IMPUT</th>
+                            <th>LIBELLE_COMP_IMP</th>
+                            <th>MOIS</th>
+                            <th>ANNEE</th>
+                            <th>CATEGORIE_IMPOT</th>
+                            <th>BUDGET</th>
+                            <th>MONTANT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="t : ${mvConsolidesDroitEtTimbre}">
+                            <!-- <td th:text="${t.id}"></td> -->
+                            <!-- <td th:text="${t.structure}"></td>
+                            <td th:text="${t.lot}"></td>
+                            <td th:text="${t.typeLot}"></td>
+                            <td th:text="${t.codeLigneImp}"></td>
+                            <td th:text="${t.codeImput}"></td>
+                            <td th:text="${t.libelleCompImp}"></td>
+                            <td th:text="${t.mois}"></td>
+                            <td th:text="${t.annee}"></td>
+                            <td th:text="${t.categorieImpot}"></td>
+                            <td th:text="${t.budget}"></td>
+                            <td th:text="${t.montant}"></td> -->
+                            <td th:text="${t[0]}"></td>
+                            <td th:text="${t[1]}"></td>
+                            <td th:text="${t[2]}"></td>
+                            <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <!-- <td th:text="${t[3]}"></td>
+                            <td th:text="${t[4]}"></td>
+                            <td th:text="${t[5]}"></td>
+                            <td th:text="${t[6]}"></td>
+                            <td th:text="${t[7]}"></td>
+                            <td th:text="${t[8]}"></td>
+                            <td th:text="${t[9]}"></td>
+                            <td th:text="${t[10]}"></td>
+                            <td th:text="${t[11]}"></td> -->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;">Montant Total :</span>
+                    <span style="font-size: 1.5em; font-weight: bold; color: blue;" th:text="${#numbers.formatDecimal(totalMontant3, 1, 'COMMA', 2, 'POINT')}"></span>
                 </div>
             </div>
 

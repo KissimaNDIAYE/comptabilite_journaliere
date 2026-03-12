@@ -20,17 +20,68 @@ import org.springframework.data.repository.query.Param;
 public interface MV_ConsolideRepository extends JpaRepository<MV_Consolide, String>{
     
     //Recuperer touts les impôts direct
-    @Query("SELECT c FROM MV_Consolide c WHERE c.codeImput IN ('71.1.1.10','71.1.1.12','71.1.2.10','71.1.2.11','71.1.2.12','71.1.2.20','71.1.4.10','71.1.4.11','71.1.4.12','71.1.4.13','71.1.7.10','71.2.1.30','71.4.4.11','71.4.4.12','71.4.5.10','71.4.6.10','71.4.9.10','71.4.9.11') ORDER BY c.codeImput")
-    List<MV_Consolide> recuperImpotDirect();
-
+    // @Query("SELECT c FROM MV_Consolide c WHERE c.codeImput IN ('71.1.1.10','71.1.1.12','71.1.2.10','71.1.2.11','71.1.2.12','71.1.2.20','71.1.4.10','71.1.4.11','71.1.4.12','71.1.4.13','71.1.7.10','71.2.1.30','71.4.4.11','71.4.4.12','71.4.5.10','71.4.6.10','71.4.9.10','71.4.9.11') ORDER BY c.codeImput")
+    // List<MV_Consolide> recuperImpotDirect();
+    
+    //Recuperer touts les impôts direct
+    // @Query("SELECT c FROM MV_Consolide c WHERE c.categorieImpot = 'IMPOT DIRECT' AND c.budget = 'NATIONAL BUDGET'")
+    // List<MV_Consolide> recuperImpotDirect();
+    
+    //Recuperer touts les impôts direct
+    @Query("SELECT c.structure, c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget, SUM(c.montant) " +
+       "FROM MV_Consolide c " +
+       "WHERE c.categorieImpot = 'IMPOT DIRECT' " +
+       "AND c.budget = 'NATIONAL BUDGET' " +
+       "AND c.codeImput IN (" +
+       "'71.1.1.10','71.1.1.12','71.1.2.11','71.1.2.12','71.1.2.13','71.1.2.20','71.1.2.21'," +
+       "'71.1.4.10','71.1.4.11','71.1.4.12','71.1.4.13','71.1.4.14'," +
+       "'71.1.7.10','71.2.1.30','71.3.2.10','71.4.4.11','71.4.4.12','71.4.5.10','71.4.6.10','71.4.9.10','71.4.9.11'" +
+       ") " +
+       "AND c.annee = :annee " +
+       "AND c.mois = :mois " +
+       "AND c.structure = :structure " +
+       "GROUP BY c.structure, c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget " +
+       "ORDER BY c.codeImput")
+        List<Object[]> recuperImpotDirect(@Param("annee") Integer annee, @Param("mois") Integer mois, @Param("structure") String structure);
 
     //Recuperer touts les impôts indirect
-    @Query("SELECT c FROM MV_Consolide c WHERE c.codeImput IN ('71.5.1.10','71.5.1.20','71.5.2.11','71.5.2.30','71.5.2.31','71.5.2.91','71.5.3.11','71.5.3.12','71.5.3.30','71.5.4.10','71.5.4.11','71.5.9.10','71.5.9.12') ORDER BY c.codeImput")
-    List<MV_Consolide> recuperImpotIndirect();
+    //@Query("SELECT c FROM MV_Consolide c WHERE c.codeImput IN ('71.5.1.10','71.5.1.20','71.5.2.11','71.5.2.30','71.5.2.31','71.5.2.91','71.5.3.11','71.5.3.12','71.5.3.30','71.5.4.10','71.5.4.11','71.5.9.10','71.5.9.12') ORDER BY c.codeImput")
+    //List<MV_Consolide> recuperImpotIndirect();
+
+    @Query("SELECT c.structure, c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget, SUM(c.montant) " +
+       "FROM MV_Consolide c " +
+       "WHERE c.categorieImpot = 'IMPOT INDIRECT' " +
+       "AND c.budget = 'NATIONAL BUDGET' " +
+       "AND c.codeImput IN (" +
+       "'71.5.1.10','71.5.1.20','71.5.2.11','71.5.2.30','71.5.2.31','71.5.2.91'," +
+       "'71.5.3.11','71.5.3.12','71.5.3.30','71.5.4.10','71.5.4.11','71.5.9.10','71.5.9.12'" +
+       ") " +
+       "AND c.annee = :annee " +
+       "AND c.mois = :mois " +
+       "AND c.structure = :structure " +
+       "GROUP BY c.structure,c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget " +
+       "ORDER BY c.codeImput")
+        List<Object[]> recuperImpotIndirect(@Param("annee") Integer annee,
+                                    @Param("mois") Integer mois,
+                                    @Param("structure") String structure);
     
     //Recuperer toutes les droits et timbres
     @Query("SELECT c FROM MV_Consolide c WHERE c.codeImput IN ('71.6.1.10','71.6.1.11','71.6.3.10','71.6.4.10','71.6.4.11','71.6.9.10') ORDER BY c.codeImput")
     List<MV_Consolide> recuperDroitEtTimbre();
+
+    @Query("SELECT c.structure, c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget, SUM(c.montant) " +
+       "FROM MV_Consolide c " +
+       "WHERE c.categorieImpot = 'ENREGISTREMENT' " +
+       "AND c.budget = 'NATIONAL BUDGET' " +
+       "AND c.codeImput IN ('71.6.1.10','71.6.1.11','71.6.3.10','71.6.4.10','71.6.4.11','71.6.9.10') " +
+       "AND c.annee = :annee " +
+       "AND c.mois = :mois " +
+       "AND c.structure = :structure " +
+       "GROUP BY c.structure, c.codeImput, c.libelleCompImp, c.mois, c.annee, c.categorieImpot, c.budget " +
+       "ORDER BY c.codeImput")
+        List<Object[]> recuperDroitEtTimbre(@Param("annee") Integer annee,
+                                    @Param("mois") Integer mois,
+                                    @Param("structure") String structure);
     
     //Recuperer toutes les donnees par structure, mois, annee
     @Query("SELECT c FROM MV_Consolide c WHERE c.structure = :structure AND c.mois = :mois AND c.annee = :annee AND c.codeImput IN ('71.6.1.10','71.6.1.11','71.6.3.10','71.6.4.10','71.6.4.11','71.6.9.10', '71.5.1.10','71.5.1.20','71.5.2.11','71.5.2.30','71.5.2.31','71.5.2.91','71.5.3.11','71.5.3.12','71.5.3.30','71.5.4.10','71.5.4.11','71.5.9.10','71.5.9.12') ORDER BY c.codeImput")
@@ -49,12 +100,29 @@ public interface MV_ConsolideRepository extends JpaRepository<MV_Consolide, Stri
     List<MV_Consolide> recuperMV_ConsolidesParStructureCode(@Param("structure") String structure, @Param("codeImput") String codeImput);
 
     //Recuperer les MV_Consolide par structure, mois, annee
-     @Query("SELECT c FROM MV_Consolide c WHERE c.structure = :structure AND c.mois = :mois AND c.annee = :annee")
+    @Query("SELECT c FROM MV_Consolide c WHERE c.structure = :structure AND c.mois = :mois AND c.annee = :annee")
     List<MV_Consolide> recuperMV_ConsolidesParStructureMoisAnnee(@Param("structure") String structure, @Param("mois") int mois, @Param("annee") int annee);
     
-    //Recuperer toutes les MV_Consolide 
+    //Recuperer les MV_Consolide par structure, mois, annee
+    @Query("SELECT c FROM MV_Consolide c WHERE c.structure = :structure AND c.mois = :mois AND c.annee = :annee")
+    List<Object[]> recuperObjetMV_ConsolidesParStructureMoisAnnee(@Param("structure") String structure, @Param("mois") int mois, @Param("annee") int annee);
+    
+    //Recuperer touts les MV_Consolide 
     @Query("SELECT c FROM MV_Consolide c")
     List<MV_Consolide> recuperMV_Consolides();
+    
+    //Recuperer toutes les structures    
+    @Query("SELECT DISTINCT c.structure FROM MV_Consolide c ORDER BY c.structure")
+    List<String> recuperStructures();
+
+    //Recuperer toutes les mois
+    @Query("SELECT DISTINCT c.mois FROM MV_Consolide c ORDER BY c.mois")
+    List<Integer> recuperMois();
+
+    //Recuperer toutes les annees
+    @Query("SELECT DISTINCT c.annee FROM MV_Consolide c ORDER BY c.annee")
+    List<Integer> recuperAnnee();
+
 
     // @Query("SELECT c FROM MV_Consolide c")
     // List<MV_Consolide> findTop100();
